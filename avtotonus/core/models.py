@@ -3,7 +3,6 @@ from django import template
 from django.db import models
 from django.template import Library
 from django.contrib.auth.models import User
-from tinymce.widgets import TinyMCE
 from enums import *
 import avtotonus.settings
 from django.core.files.storage import FileSystemStorage
