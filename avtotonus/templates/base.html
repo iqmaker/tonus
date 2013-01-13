@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+ {% block meataheader %}
+ <meta charset="utf-8">
+ <title>{{ page.title|slice:":255" }}</title>
+ <meta name="description" content="{{ page.description|slice:":255" }}">  
+ <link href="{{ STATIC_URL }}images/favicon.ico" rel="shortcut icon" type="image/png" />
+ <link rel="stylesheet" href="{{ STATIC_URL }}css/styles.css">
+ {% endblock %}{% block secondheader %}
+ {% endblock %}
+</head>
+<body>
+    <div class="header"></div>
+    <div class="body">
+      <nav>
+        <div class="left-menu">
+            {% block leftmenu %}
+            {% for menu in menulist %} 
+            <h2>{{ menu.title }} </h2>
+                <ul class="menu">
+                {% for item in menu.items %} 
+                    <li class="item {{ item.active }}">
+                        <a href="{{ item.urlname }}"><span>{{ item.title }}</span></a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+            {% endblock %}
+            </div>
+        </nav>
+        <div class="content">
+            {% block content %}
+                {{ page.body|safe }} 
+            {% endblock %}
+        </div>
+    </div>
+    <div class="footer"><a href="http://poncy.ru">Разработка сайта: <span>poncy.ru</span></a></div>
+    {% block footerscripts %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/liveinternet.js"></script>
+    {% endblock %}
+</body>
+</html>

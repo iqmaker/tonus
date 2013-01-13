@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ page.title }}</h1>
+<hr>
+{{ page.intro_text|safe }}
+{% for m in models %}
+<a href="/model/{{m.urlname}}.html"><h2 class="producttitle large"> Разборка {{ m.title }}</h2></a>
+<p class="justify">{{ m.intro_text }}</p>
+         <div class="photofiles">
+         {% for i in m.pictures %}
+         <a class="" data-rel="hi" href="/modification/{{ i.page.urlname }}.html" title="{{ i.title }}"><img width="130" class="poster-image" alt="{{ i.title }}" src="{{ i.thumbnail_url }}"></a>
+         {% endfor %}
+         </div>
+         <hr class="light">
+         <div class="information noboth">
+         {% for g in groups %}    
+            <a href="/group/{{ g.urlname }}/{{ m.urlname }}.html"><span class="producthead notbold">{{ g.title }}</span>{% if not forloop.last %},{% endif %}</a>
+               
+         {% endfor %} 
+         </div>
+{% endfor %}
+{{ page.body|safe }}
+{% endblock %}

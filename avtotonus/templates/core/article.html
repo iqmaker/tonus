@@ -1,0 +1,22 @@
+{% extends "core/index.html" %}
+{% block content %}
+<h1> {{ page.title }} </h1>
+<hr />
+<img src="{{ MEDIA_URL }}{{ page.preview_picture }}" align="right" class="article-picture" width="{{ settings.ARTICLE_IMAGE_SIZE }}" alt="{{ page.title }}">
+    {{ page.body|safe }} 
+
+ {% if next_articles %}
+     <div class="nextarticles">
+     <p class="important size20px">Другие статьи:</p>
+     {% for a in next_articles %}
+         <div class="article-box">
+             <p class="next-article-header"><a href="/article/{{ a.urlname }}.html">{{ a.title }}</a></p>
+         <a class="group1 cboxElement" data-rel="hi" href="/article/{{ a.urlname }}.html" title="{{ a.title }}"><img width="120" class="poster-image" alt="{{ a.title }}" src="{{ MEDIA_URL }}{{ a.preview_picture }}"></a>
+         </div><!--article-box-->
+     {% endfor %}
+     </div>
+ {% endif %}
+
+{% endblock %}
+
+

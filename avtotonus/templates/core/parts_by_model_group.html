@@ -1,0 +1,51 @@
+{% extends "core/index.html" %}
+{% block leftmenu %}
+
+    <h2>{{ carmodel.title }}</h2>
+    <ul class="menu">
+    {% for group in partsgroups %} 
+        <li id="" class="item {{ group.active }}">
+            <a href="/group/{{ group.urlname }}/{{carmodel.urlname}}.html"><span>{{ group.short_title }}</span></a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% for menu in menulist %} 
+    <h2>{{ menu.title }} </h2>
+        <ul class="menu">
+        {% for item in menu.items %} 
+            <li id="" class="item {{ item.active }}">
+                <a href="{{ item.urlname }}"><span>{{ item.title }}</span></a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+
+{% endblock %}
+{% block content %} 
+<span class="base-phone" >{{ settings.PHONE }}</span>
+<h1 class="producttitle large">{{ carmodel.title }} {{ page.title|lower }} </h1>
+ <hr class="hr-light" color="#EEE" size="1" />
+ <div class="main-content">
+
+        {% if page.preview_picture %}
+            <img width="61" class="parts-group-preview" alt="{{ carmodel.title}} {{ page.title }}" align="left" src="{{ MEDIA_URL }}{{ page.preview_picture }}">
+        {% endif %}
+
+     {{ page.body|safe }}
+ </div>
+ <hr class="hr-light" color="#EEE" size="1" />
+
+ {% for p in parts %}    
+   <div class="div-item" style="">
+        <a href="/parts/{{ p.urlname }}.html"><div class="producthead">{{ p.title }}<br /></div></a>
+        {% if p.preview_picture %}
+        <a href="/parts/{{ p.urlname }}.html"><img class="parts-image" height="118" alt="{{ p.title }}" align="left" src="{{ p.thumbnail_url }}"></a>
+        {% endif %}
+        <div class="item-text">
+            <p class="price">Цена: <span>{{ p.used_price_min }} - {{ p.used_price_max }} р.</span> </p>
+            <p class="city">Город: <span>{{ p.place_name }}</span></p>
+        </div>
+   </div>
+ {% endfor %} 
+{% endblock %}

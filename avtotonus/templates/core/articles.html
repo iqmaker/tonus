@@ -1,0 +1,15 @@
+{% extends "core/index.html" %}
+{% block content %}
+
+ {% for a in articles %}    
+   <div class="div-item">
+       <a href="/article/{{ a.urlname }}.html"><div class="producthead">{{ a.title }}<br /></div></a>
+        {% if a.preview_picture %}
+        <a href="/article/{{ a.urlname }}.html"><img width="180" alt="{{ a.title }}" align="left" src="{{ MEDIA_URL }}{{ a.preview_picture }}"></a>
+        {% endif %}
+        <div class="item-text down-text">
+            <p class="price justify">Описание: <span>{{ a.description }}</span> </p>
+        </div>
+   </div>
+ {% endfor %} 
+{% endblock %}

@@ -1,0 +1,105 @@
+body { 
+     padding:0px; 
+     margin:0px;
+     font-size:14px;
+     background:url( ../images/brik-black.jpg) top left repeat;
+     background-attachment:fixed;
+     font-family:Arial, Helvetica, sans-serif;
+     color:#555;
+}
+h1 { margin:18px 10px 15px 10px; }
+ul, ol { 
+    list-style:none; 
+    padding:0px; 
+    margin:0px;
+}
+a { text-decoration: none; 
+}
+div.header {
+     margin:0 auto;
+     height:345px;
+     width:942px;
+     background:url( ../images/nheader.jpg) no-repeat top center;        
+}
+div.body { 
+    margin:0 auto;
+    min-height:400px;
+    width:942px;
+    background-color:white;
+    margin-top:-18px;
+    border-radius:0 0 4px 4px;
+}
+div.footer { 
+    margin:0 auto;
+    width:942px; 
+}
+div.left-menu { 
+    background: #0a0d14 url( ../images/menu-back.png) top left no-repeat;
+    margin-top:-15px;
+    margin-left:15px;
+    padding-top:15px;
+    padding-bottom:45px;
+    text-align:left;
+    border-radius: 0 0 8px 8px;
+    width:297px;
+    float:left;
+}
+div.content { 
+    width:560px;
+    margin-left:350px;
+    padding-top:20px;
+    padding-bottom:20px;
+} 
+div.left-menu h2 { 
+    color:#ccc;
+    margin-left:25px;
+}
+
+div.left-menu  ul {
+     width:250px;
+     margin-left:20px;
+}
+div.left-menu  ul li {
+    margin:10px;
+    padding-left:13px;
+    padding-bottom:5px;
+    background:url( ../images/arrow-blue.png) no-repeat left top;
+    border-bottom:1px dashed #333;
+}
+div.left-menu  ul li a { 
+    color:#999;
+    text-decoration:none;
+    padding-bottom:30px;
+    margin-left:10px;					
+}
+
+div.left-menu  ul li a:hover {
+    color:#FFF;
+    margin-left:12px;
+}
+
+div.left-menu  ul li.active a{
+    /*margin-left:20px;*/
+}
+div.left-menu  ul li ul { display:none; }
+
+div.left-menu  .current a {
+   color:#FFF;
+}
+div.footer a  { float:right; 
+    color:#AAA; 
+    text-align:right; 
+    padding:10px; 
+    text-decoration:underline; 
+    font-size:11px;
+ }
+div.footer a span { 
+    font-weight:bold; color:#BB6666; 
+    text-decoration:none;
+}
+div.content ul { 
+    list-style: disc outside none;
+} 
+div.content ul li { 
+    padding:8px 0px 0px 0px;
+}

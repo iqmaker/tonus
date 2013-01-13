@@ -1,0 +1,111 @@
+{% extends "core/index.html" %}
+{% block secondheader %}
+    <script src="{{ STATIC_URL }}js/jquery.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/colorbox.css" />
+    <script src="{{ STATIC_URL }}js/jquery.colorbox.js"></script>    
+{% endblock %}
+{% block leftmenu %}
+<h2>{{ carmodel.title }}</h2>
+    <ul class="menu">
+    {% for group in partsgroups %} 
+        <li class="item {{ group.active }}">
+            <a href="/group/{{ group.urlname }}/{{carmodel.urlname}}.html"><span>{{ group.short_title }}</span></a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% for menu in menulist %} 
+    <h2>{{ menu.title }} </h2>
+        <ul class="menu">
+        {% for item in menu.items %} 
+            <li class="item {{ item.active }}">
+                <a href="{{ item.urlname }}"><span>{{ item.title }}</span></a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}
+{% block content %}
+ <h1 class="producttitle"> {{ page.title }}</h1>
+ <hr class="hr-light" color="#EEE" size="1" />
+ <div class="contact-info">
+     <div class="photofiles">
+         {% for i in partsimages %}
+         <div class="poster-image {% if not forloop.first %} fleft {% endif %}">
+             <a class="group1 cboxElement" data-rel="hi" href="{{ i.get_picture_url }}" title="{{ i.title }}"><img width="{% if forloop.first %} 300 {% else %} 150 {% endif %}" class="poster-image" alt="{{ i.title }}" src="{{ i.get_picture_url }}"></a>
+         </div>         
+         {% endfor %}
+     </div> <!--photofiles-->
+                       <br> 
+                       <div class="information">
+                           <p class="price">Цена: <span>от {{ page.used_price_min }} до {{ page.used_price_max }} р.</span> </p>
+                           {% if page.code %}
+                           <p class="code">Код: <span>от {{ page.code }}</span> </p>
+                           {% endif %}
+                           {% if page.buyer_name %} 
+                           <p class="contact-name">Продавец: <span>{{ page.buyer_name }} </span> </p>
+                           {% endif %}
+                           {% if page.phone %}
+                           <p class="phone">Телефон: <span>{{ page.phone }}</span> </p>                 
+                           {% endif %}
+                           {% if page.place_name %}
+                            <p class="city">Город: <span>{{ page.place_name }}</span></p>    
+                           {% endif %}
+                        <p class="parts-group">Группа товара: <span><a href="/group/{{group.urlname}}/{{carmodel.urlname}}.html">{{ group.title }}</a></span></p>    
+                        <div class="car"> 
+                         <span>Для автомобиля: </span>
+                         <ul class="attributes">
+                         {% for modification in modifications %}
+                             <li><a href="/modification/{{modification.urlname}}.html">{{ modification.title }} </a></li>
+                         {% endfor %}   
+                         </ul>
+                         <br />
+                         {% if aliases %}
+                             <span>Связанные выражения: </span>
+                             <ul class="attributes">
+                             {% for alias in aliases %}
+                                 <li>{{ alias.title }}</li>
+                             {% endfor %}   
+                             </ul>
+                             <br />
+                         {% endif %}
+                         {% if compatibles %}
+                             <span>Возможная совместимость с деталями: </span>
+                             <ul class="attributes">
+                             {% for compatible in compatibles %}
+                                 <li>{{ compatible.code }}</li>
+                             {% endfor %}   
+                             </ul>
+                             <br />
+                         {% endif %}
+                         {% if components %}
+                             <span>Данная деталь - {{ page.title }}, содержит в себе: </span>
+                             <ul class="attributes">
+                             {% for component in components %}
+                                 <li>{{ component.title }} (код: {{ component.code }})</li>
+                             {% endfor %}   
+                             </ul>
+                             <br />
+                         {% endif %}
+                         </div>
+                                  
+                        <div class="goods-info">
+                            {{ page.body }}
+                        </div>             
+
+                     {% if next_parts %}
+                     <noindex>
+                         <div class="nextarticles">
+                         <p class="important size20px">Другие детали:</p>
+                         {% for p in next_parts %}
+                         <div class="article-box">
+                             <p class="next-article-header"><a href="/parts/{{ p.urlname }}.html">{{ p.title }}</a></p>
+                         <a class="" data-rel="hi" href="/parts/{{ p.urlname }}.html" title="{{ p.title }}"><img width="120" class="poster-image" alt="{{ p.title }}" src="{{ MEDIA_URL }}{{ p.preview_picture }}"></a>
+                         </div><!--article-box-->
+                         {% endfor %}
+                         </div>
+                     </noindex>
+                     {% endif %}
+                    </div><!--div.information-->
+</div>
+{% endblock %}
