@@ -200,6 +200,10 @@ img.poster-image {
     border-bottom: 1px dashed #DDD;
     padding-bottom:2px;
 }
+.phone span { 
+  /* font: italic 1.17em Georgia, serif;    
+   letter-spacing:1px;*/
+}
 p {
     margin-bottom: 18px;
 }
