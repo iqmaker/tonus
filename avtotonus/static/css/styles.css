@@ -10,6 +10,7 @@ body {
 h1 { 
     margin:18px 10px 15px 0px; 
     letter-spacing:-1px;
+    font-weight:normal;
 }
 ul, ol { 
     list-style:none; 
