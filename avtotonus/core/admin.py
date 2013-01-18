@@ -71,6 +71,7 @@ class PageAdmin( admin.ModelAdmin ):
         
 class PartsAdmin( PageAdmin ):
     list_display = ( 'short_title', 'code', 'price', 'used_price_min', 'reg_date' )
+    search_fields = ['short_title', 'code']
     list_filter = ( 'carmodel', 'modification','group', 'reg_date', 'status' ) 
     fieldsets = [
             ( None, { 'fields': [ 'title', 'short_title', 'pagetype', 'preview_picture', 'code', ('used_price_min', 'used_price_max', \
