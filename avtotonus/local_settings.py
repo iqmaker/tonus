@@ -21,7 +21,8 @@ SECRET_KEY = '4+jpq-!&amp;s=u!rbrl-1^fo7kg*#+d_^fg^i!82q#pa1yd_(^l&amp;c'
 # Index page id from Article models
 MAIN_PAGE_ID = 1
 CONTACT_PAGE_ID = 25
-PHONE = "+7(916) 730-34-73"
+PHONE = "+7(926) 217-47-47"
+#PHONE = "+7(916) 730-34-73"
 CITY = u"Москва, Химки"
 BUYER_NAME = u"Разборка в Химках"
 ARTICLE_IMAGE_SIZE = 300;
